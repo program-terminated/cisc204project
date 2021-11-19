@@ -1,4 +1,1 @@
-def func() {
-hello !!!
-Ash
-}
+from bauhaus import Encoding, proposition, constraint
