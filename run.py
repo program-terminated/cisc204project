@@ -68,21 +68,21 @@ def final_theory():
         for y in range(col+1):
             posDict.clear()
             if (x-1 >= 0 and y-1 >= 0):
-                posDict[1] = [x-1], [y-1]
+                posDict[1] = [x-1, y-1]
             if (x-1 >= 0):
-                posDict[2] = [x-1],[y]
+                posDict[2] = [x-1, y]
             if (x-1 >= 0 and y+1 <= col):
-                posDict[3] = [x-1], [y+1]
+                posDict[3] = [x-1, y+1]
             if (y-1 >= 0):
-                posDict[4] = [x], [y-1]
+                posDict[4] = [x, y-1]
             if (y+1 <= col):
-                posDict[5] = [x], [y+1]
+                posDict[5] = [x, y+1]
             if (x+1 <= row and y-1 >= 0):
-                posDict[6] = [x+1], [y-1]
+                posDict[6] = [x+1, y-1]
             if (x+1 <= row):
-                posDict[7] = [x+1], [y]
+                posDict[7] = [x+1, y]
             if (x+1 <= row and y+1 <= col):
-                posDict[8] = [x+1], [y+1]
+                posDict[8] = [x+1, y+1]
               
              # We make different constraints based on where our reference square is on the board
             for i in posDict:
