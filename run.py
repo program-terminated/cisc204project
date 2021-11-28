@@ -64,24 +64,24 @@ def final_theory():
     # Assigning values to each of the squares other than our reference square (x, y). We give the other squares values for when we need to check them when
     # checking the perimeter of a aquare.
     row, col = init_board(test_grid)
-    for x in range(len(row)+1):
-        for y in range(len(col)+1):
+    for x in range(row+1):
+        for y in range(col+1):
             posDict.clear()
             if (x-1 >= 0 and y-1 >= 0):
                 posDict[1] = [x-1], [y-1]
             if (x-1 >= 0):
                 posDict[2] = [x-1],[y]
-            if (x-1 >= 0 and y+1 <= len(col)):
+            if (x-1 >= 0 and y+1 <= col):
                 posDict[3] = [x-1], [y+1]
             if (y-1 >= 0):
                 posDict[4] = [x], [y-1]
-            if (y+1 <= len(col)):
+            if (y+1 <= col):
                 posDict[5] = [x], [y+1]
-            if (x+1 <= len(row) and y-1 >= 0):
+            if (x+1 <= row and y-1 >= 0):
                 posDict[6] = [x+1], [y-1]
-            if (x+1 <= len(row)):
+            if (x+1 <= row):
                 posDict[7] = [x+1], [y]
-            if (x+1 <= len(row) and y+1 <= len(col)):
+            if (x+1 <= row and y+1 <= col):
                 posDict[8] = [x+1], [y+1]
               
              # We make different constraints based on where our reference square is on the board
