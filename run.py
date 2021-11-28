@@ -52,12 +52,7 @@ def init_board(input_grid):
                 f &= ~Q2[i][j]
                 f &= ~Q3[i][j]
                 f &= U[i][j]
-    return row, col
-#Prints the solution
-def display_solution(sol):
-
-  else:
-               
+    return row, col    
     
 # Temporary example theory
 def final_theory():
