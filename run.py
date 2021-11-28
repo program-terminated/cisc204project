@@ -5,6 +5,8 @@ from bauhaus.utils import count_solutions, likelihood
 # Encoding that will store all of your constraints
 
 # list representing grid
+#Q is known tiles
+# - is unknown tiles
 test_grid = [['-', 'Q1', '-'],
              ['Q1','Q1', '-'],
              ['-','-','-']]
