@@ -44,13 +44,13 @@ def init_board(input_grid):
                 f &= ~Q2[i][j]
                 f &= ~U[i][j]
                 
-            elif test_grid[i][j] == "B":
-                f &= B[i][j]
+            elif test_grid[i][j] == "-":
+                f &= ~B[i][j]
                 f &= ~S[i][j]
                 f &= ~Q1[i][j]
                 f &= ~Q2[i][j]
                 f &= ~Q3[i][j]
-                f &= ~U[i][j]
+                f &= U[i][j]
                 
                 
                
@@ -62,34 +62,34 @@ def final_theory():
     # Add constraints to every square in the grid
     posDict = {}
 
-    for x in range(length+1):
-        for y in range(width+1):
-            posDict.clear()
-            if (x-1 >= 0 and y-1 >= 0):
-                posDict[1] = (x-1, y-1)
-            if (x-1 >= 0):
-                posDict[2] = (x-1, y)
-            if (x-1 >= 0 and y+1 <= width):
-                posDict[3] = (x-1, y+1)
-            if (y-1 >= 0):
-                posDict[4] = (x, y-1)
-            if (y+1 <= width):
-                posDict[5] = (x, y+1)
-            if (x+1 <= length and y-1 >= 0):
-                posDict[6] = (x+1, y-1)
-            if (x+1 <= length):
-                posDict[7] = (x+1, y)
-            if (x+1 <= length and y+1 <= width):
-                posDict[8] = (x+1, y+1)
-            for i in posDict:
-                if (len(posDict) == 3):
-                    #make constraints
-                elif (len(posDict) == 5):
-                    #make constraints
-                elif (len(posDict) == 8):
-                    #make constraints
-                else:
-                    print >> sys.stderr, "dictionary error"
+  for x in range(length+1):
+      for y in range(width+1):
+          posDict.clear()
+          if (x-1 >= 0 and y-1 >= 0):
+              posDict[1] = (x-1, y-1)
+          if (x-1 >= 0):
+              posDict[2] = (x-1, y)
+          if (x-1 >= 0 and y+1 <= width):
+              posDict[3] = (x-1, y+1)
+          if (y-1 >= 0):
+              posDict[4] = (x, y-1)
+          if (y+1 <= width):
+              posDict[5] = (x, y+1)
+          if (x+1 <= length and y-1 >= 0):
+              posDict[6] = (x+1, y-1)
+          if (x+1 <= length):
+              posDict[7] = (x+1, y)
+          if (x+1 <= length and y+1 <= width):
+              posDict[8] = (x+1, y+1)
+          for i in posDict:
+              if (len(posDict) == 3):
+                  #make constraints
+              elif (len(posDict) == 5):
+                  #make constraints
+              elif (len(posDict) == 8):
+                  #make constraints
+              else:
+                  print >> sys.stderr, "dictionary error"
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
