@@ -62,6 +62,8 @@ def final_theory():
     # Add constraints to every square in the grid
     posDict = {}
 
+    # Assigning values to each of the squares other than our reference square (x, y). We give the other squares values for when we need to check them when
+    # checking the perimeter of a aquare.
   for x in range(length+1):
       for y in range(width+1):
           posDict.clear()
