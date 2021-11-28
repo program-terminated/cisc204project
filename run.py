@@ -12,12 +12,14 @@ test_grid = [['-', 'Q1', '-'],
              ['-','-','-']]
 
 def init_board(input_grid):
-    # 3 x 3 board
+    # board that is inputed
+    # we grab length and collumns from length of inputed board
     row = len(input_grid[0])
     col = len(input_grid)
     f = true;
     for i in range(col):
         for j in range(row):
+          # setting propositions based on layout of board
             if test_grid[i][j] == "Q1":
                 f &= ~B[i][j]
                 f &= S[i][j]
