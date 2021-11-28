@@ -96,8 +96,12 @@ def final_theory():
                                       B[posDict[i + 2 % 3][0]][posDict[i + 2 % 3][1]]))
               # If the length of the dictionary is 5, the reference square is along the outer perimeter of the board.
               elif (len(posDict) == 5):
-                E.add_constraint((Q1[x][y] & B(posDict[i])) >> (S(posDict[i+1 % 5]) & S(posDict[i+2 % 5]) & S(posDict[i+3 % 5]) & S(posDict[i+4 % 5])))
-                E.add_constraint((Q1[x][y] & S(posDict[i]) & S(posDict[i+1 % 5]) & S(posDict[i+2 % 5] & S(posDict[i+3 % 5])) >> B(posDict[i+4 % 5])) 
+                E.add_constraint((Q1[x][y] & B[posDict[i][0]][posDict[i][1]])) >> 
+                                 (S[posDict[i+1 % 5][0]][posDict[i+1 % 5][1]]) & S[posDict[i+2 % 5][0]][posDict[i+2 % 5][1]] & 
+                                 S(posDict[posDict[i+3 % 5][0]][posDict[i+3 % 5][1]]) & S(posDict[posDict[i+4 % 5][0]][posDict[i+4 % 5][1]])))
+                E.add_constraint((Q1[x][y] & S[posDict[i][0]][posDict[i][1]]) & 
+                                 S[posDict[i+1 % 5][0]][posDict[i+1 % 5][1]] & S[posDict[i+2 % 5][0]][posDict[i+2 % 5][1]] & 
+                                 S[posDict[i+3 % 5][0]][posDict[i+3 % 5][1]])) >> B[posDict[i+4 % 5][0]][posDict[i+4 % 5][1]])
               # If the length of the dictionary is 8, the reference square is somewhere not along the outer perimeter of the board.
               elif (len(posDict) == 8):
                 E.add_constraint((Q1[x][y] & B(posDict[i])) >> (S(posDict[i+1 % 8]) & S(posDict[i+2 % 8]) & S(posDict[i+3 % 8]) & S(posDict[i+4 % 8]) & S(posDict[i+5 % 8]) & S(posDict[i+6 % 8]) & S(posDict[i+7 % 8])))
