@@ -67,46 +67,46 @@ def final_theory():
 
     # Assigning values to each of the squares other than our reference square (x, y). We give the other squares values for when we need to check them when
     # checking the perimeter of a aquare.
-  row, col = init_board(test_grid)
-  for x in range(len(row)+1):
-      for y in range(len(col)+1):
-          posDict.clear()
-          if (x-1 >= 0 and y-1 >= 0):
-              posDict[1] = [x-1], [y-1]
-          if (x-1 >= 0):
-              posDict[2] = [x-1],[y]
-          if (x-1 >= 0 and y+1 <= len(col)):
-              posDict[3] = [x-1], [y+1]
-          if (y-1 >= 0):
-              posDict[4] = [x], [y-1]
-          if (y+1 <= len(col)):
-              posDict[5] = [x], [y+1]
-          if (x+1 <= len(row) and y-1 >= 0):
-              posDict[6] = [x+1], [y-1]
-          if (x+1 <= len(row)):
-              posDict[7] = [x+1], [y]
-          if (x+1 <= len(row) and y+1 <= len(col)):
-              posDict[8] = [x+1], [y+1]
+    row, col = init_board(test_grid)
+    for x in range(len(row)+1):
+        for y in range(len(col)+1):
+            posDict.clear()
+            if (x-1 >= 0 and y-1 >= 0):
+                posDict[1] = [x-1], [y-1]
+            if (x-1 >= 0):
+                posDict[2] = [x-1],[y]
+            if (x-1 >= 0 and y+1 <= len(col)):
+                posDict[3] = [x-1], [y+1]
+            if (y-1 >= 0):
+                posDict[4] = [x], [y-1]
+            if (y+1 <= len(col)):
+                posDict[5] = [x], [y+1]
+            if (x+1 <= len(row) and y-1 >= 0):
+                posDict[6] = [x+1], [y-1]
+            if (x+1 <= len(row)):
+                posDict[7] = [x+1], [y]
+            if (x+1 <= len(row) and y+1 <= len(col)):
+                posDict[8] = [x+1], [y+1]
               
-             # We make different constraints based on where our reference square is on the board.
-          for i in posDict:
+             # We make different constraints based on where our reference square is on the board
+            for i in posDict:
             
               # If the length of the dictionary is 3, it means our reference square is in the corner of the board.
-              if (len(posDict) == 3):
-                  E.add_constraint((Q1[x][y] ∧ B(posDict[i])) → (S(posDict[i+1 % 3]) ∧ S(posDict[i+2 % 3])))
-                  E.add_constraint((Q1[x][y] ∧ S(posDict[i]) ∧ S(posDict[i+1 % 3])) → B(posDict[i+2 % 3]))
+                if (len(posDict) == 3):
+                      E.add_constraint((Q1[x][y] ∧ B(posDict[i])) → (S(posDict[i+1 % 3]) ∧ S(posDict[i+2 % 3])))
+                      E.add_constraint((Q1[x][y] ∧ S(posDict[i]) ∧ S(posDict[i+1 % 3])) → B(posDict[i+2 % 3]))
                   
               # If the length of the dictionary is 5, the reference square is along the outer perimeter of the board.
-              elif (len(posDict) == 5):
-                  E.add_constraint((Q1[x][y] ∧ B(posDict[i])) → (S(posDict[i+1 % 5]) ∧ S(posDict[i+2 % 5]) ∧ S(posDict[i+3 % 5]) ∧ S(posDict[i+4 % 5])))
-                  E.add_constraint((Q1[x][y] ∧ S(posDict[i]) ∧ S(posDict[i+1 % 5]) ∧ S(posDict[i+2 % 5] ∧ S(posDict[i+3 % 5])) → B(posDict[i+4 % 5]))
+                elif (len(posDict) == 5):
+                      E.add_constraint((Q1[x][y] ∧ B(posDict[i])) → (S(posDict[i+1 % 5]) ∧ S(posDict[i+2 % 5]) ∧ S(posDict[i+3 % 5]) ∧ S(posDict[i+4 % 5])))
+                      E.add_constraint((Q1[x][y] ∧ S(posDict[i]) ∧ S(posDict[i+1 % 5]) ∧ S(posDict[i+2 % 5] ∧ S(posDict[i+3 % 5])) → B(posDict[i+4 % 5]))
               # If the length of the dictionary is 8, the reference square is somewhere not along the outer perimeter of the board.
-              elif (len(posDict) == 8):
+                elif (len(posDict) == 8):
                   #make constraints
-                  E.add_constraint((Q1[x][y] ∧ B(posDict[i])) → (S(posDict[i+1 % 8]) ∧ S(posDict[i+2 % 8]) ∧ S(posDict[i+3 % 8]) ∧ S(posDict[i+4 % 8]) ∧ S(posDict[i+5 % 8]) ∧ S(posDict[i+6 % 8]) ∧ S(posDict[i+7 % 8])))
-                  E.add_constraint((Q1[x][y] ∧ S(posDict[i]) ∧ S(posDict[i+1 % 8]) ∧ S(posDict[i+2 % 8] ∧ S(posDict[i+3 % 8])∧ S(posDict[i+4 % 8]) ∧ S(posDict[i+5 % 8] ∧ S(posDict[i+6 % 8])) → B(posDict[i+7 % 8]))
-              else:
-                  print >> sys.stderr, "dictionary error"
+                      E.add_constraint((Q1[x][y] ∧ B(posDict[i])) → (S(posDict[i+1 % 8]) ∧ S(posDict[i+2 % 8]) ∧ S(posDict[i+3 % 8]) ∧ S(posDict[i+4 % 8]) ∧ S(posDict[i+5 % 8]) ∧ S(posDict[i+6 % 8]) ∧ S(posDict[i+7 % 8])))
+                      E.add_constraint((Q1[x][y] ∧ S(posDict[i]) ∧ S(posDict[i+1 % 8]) ∧ S(posDict[i+2 % 8] ∧ S(posDict[i+3 % 8])∧ S(posDict[i+4 % 8]) ∧ S(posDict[i+5 % 8] ∧ S(posDict[i+6 % 8])) → B(posDict[i+7 % 8]))
+                else:
+                      print >> sys.stderr, "dictionary error"
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
