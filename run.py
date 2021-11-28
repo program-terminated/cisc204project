@@ -16,7 +16,7 @@ def init_board(input_grid):
     # we grab length and collumns from length of inputed board
     row = len(input_grid[0])
     col = len(input_grid)
-    f = true;
+    f = True
     for i in range(col):
         for j in range(row):
           # setting propositions based on layout of board
