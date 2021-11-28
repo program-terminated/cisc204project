@@ -3,6 +3,37 @@ from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
 # Encoding that will store all of your constraints
+
+# list representing grid
+test_grid = [['-', 'Q1', '-'],
+             ['Q1','Q1', '-'],
+             ['-','-','-']]
+
+def init_board(test_grid):
+    # 3 x 3 board
+    f = true;
+    for i in range(3):
+        for j in range(3):
+            if test_grid[i][j] == "Q1":
+                f &= ~B[i][j]
+                f &= S[i][j]
+                f &= Q1[i][j]
+                f &= ~U[i][j]
+   
+             elif test_grid[i][j] == "Q2":
+                f &= ~B[i][j]
+                f &= S[i][j]
+                f &= Q2[i][j]
+                f &= ~U[i][j]
+               
+            elif test_grid[i][j] == "Q3":
+                f &= ~B[i][j]
+                f &= S[i][j]
+                f &= Q3[i][j]
+                f &= ~U[i][j]
+                
+               
+    
 E = Encoding()
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
@@ -33,8 +64,11 @@ class FancyPropositions:
 
 # Call your variables whatever you want
 S = BasicPropositions("S")
-Q = BasicPropositions("Q")
+Q1 = BasicPropositions("Q1")
+Q2 = BasicPropositions("Q2")
+Q3 = BasicPropositions("Q3")
 B = BasicPropositions("B")
+U = BasicPropositions("U")
 
 
 
