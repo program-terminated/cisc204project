@@ -51,7 +51,7 @@ def init_board(input_grid):
                 f &= ~Q2[i][j]
                 f &= ~Q3[i][j]
                 f &= U[i][j]
-                
+    return row, col
 #Prints the solution
 def display_solution(sol):
 
@@ -67,24 +67,25 @@ def final_theory():
 
     # Assigning values to each of the squares other than our reference square (x, y). We give the other squares values for when we need to check them when
     # checking the perimeter of a aquare.
-  for x in range(length+1):
-      for y in range(width+1):
+  row, col = init_board(test_grid)
+  for x in range(len(row)+1):
+      for y in range(len(col)+1):
           posDict.clear()
           if (x-1 >= 0 and y-1 >= 0):
               posDict[1] = [x-1], [y-1]
           if (x-1 >= 0):
               posDict[2] = [x-1],[y]
-          if (x-1 >= 0 and y+1 <= width):
+          if (x-1 >= 0 and y+1 <= len(col)):
               posDict[3] = [x-1], [y+1]
           if (y-1 >= 0):
               posDict[4] = [x], [y-1]
-          if (y+1 <= width):
+          if (y+1 <= len(col)):
               posDict[5] = [x], [y+1]
-          if (x+1 <= length and y-1 >= 0):
+          if (x+1 <= len(row) and y-1 >= 0):
               posDict[6] = [x+1], [y-1]
-          if (x+1 <= length):
+          if (x+1 <= len(row)):
               posDict[7] = [x+1], [y]
-          if (x+1 <= length and y+1 <= width):
+          if (x+1 <= len(row) and y+1 <= len(col)):
               posDict[8] = [x+1], [y+1]
               
              # We make different constraints based on where our reference square is on the board.
