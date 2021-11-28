@@ -53,7 +53,13 @@ def init_board(input_grid):
                 
                
     
-E = Encoding()
+# Temporary example theory
+def final_theory():
+    E = Encoding()
+    
+    # Add constraints to every square in the grid
+    for i in range(size):
+      for j in range(size):
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
