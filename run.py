@@ -9,20 +9,26 @@ test_grid = [['-', 'Q1', '-'],
              ['Q1','Q1', '-'],
              ['-','-','-']]
 
-def init_board(test_grid):
+def init_board(input_grid):
     # 3 x 3 board
+    len(input_grid[0]) = row
+    len(input_grid) = col
     f = true;
-    for i in range(3):
-        for j in range(3):
+    for i in range(col):
+        for j in range(row):
             if test_grid[i][j] == "Q1":
                 f &= ~B[i][j]
                 f &= S[i][j]
                 f &= Q1[i][j]
+                f &= ~Q2[i][j]
+                f &= ~Q3[i][j]
                 f &= ~U[i][j]
    
              elif test_grid[i][j] == "Q2":
                 f &= ~B[i][j]
                 f &= S[i][j]
+                f &= ~Q1[i][j]
+                f &= ~Q3[i][j]
                 f &= Q2[i][j]
                 f &= ~U[i][j]
                
@@ -30,7 +36,18 @@ def init_board(test_grid):
                 f &= ~B[i][j]
                 f &= S[i][j]
                 f &= Q3[i][j]
+                f &= ~Q1[i][j]
+                f &= ~Q2[i][j]
                 f &= ~U[i][j]
+                
+            elif test_grid[i][j] == "B":
+                f &= B[i][j]
+                f &= ~S[i][j]
+                f &= ~Q1[i][j]
+                f &= ~Q2[i][j]
+                f &= ~Q3[i][j]
+                f &= ~U[i][j]
+                
                 
                
     
