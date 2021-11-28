@@ -104,9 +104,24 @@ def final_theory():
                                  S[posDict[i+3 % 5][0]][posDict[i+3 % 5][1]])) >> B[posDict[i+4 % 5][0]][posDict[i+4 % 5][1]])
               # If the length of the dictionary is 8, the reference square is somewhere not along the outer perimeter of the board.
               elif (len(posDict) == 8):
-                E.add_constraint((Q1[x][y] & B(posDict[i])) >> (S(posDict[i+1 % 8]) & S(posDict[i+2 % 8]) & S(posDict[i+3 % 8]) & S(posDict[i+4 % 8]) & S(posDict[i+5 % 8]) & S(posDict[i+6 % 8]) & S(posDict[i+7 % 8])))
-                E.add_constraint((Q1[x][y] & S(posDict[i]) & S(posDict[i+1 % 8]) & S(posDict[i+2 % 8] & S(posDict[i+3 % 8])& S(posDict[i+4 % 8]) & S(posDict[i+5 % 8] & S(posDict[i+6 % 8])) >> B(posDict[i+7 % 8]))
-              else:          
+                E.add_constraint((Q1[x][y] & B[posDict[i][0]][posDict[i][1]] >>
+                        (S[posDict[i + 1 % 8][0]][posDict[i + 1 % 8][1]] &
+                        S[posDict[i+2 % 8][0]][posDict[i+2 % 8][1]] &
+                        S[posDict[i + 3 % 8][0]][posDict[i + 3 % 8][1]]) &
+                        S[posDict[i + 4 % 8][0]][posDict[i + 4 % 8][1]] &
+                        S[posDict[i + 5 % 8][0]][posDict[i + 5 % 8][1]] &
+                        S[posDict[i + 6 % 8][0]][posDict[i + 6 % 8][1]] &
+                        S[posDict[i + 7 % 8][0]][posDict[i + 7 % 8][1]]))
+
+                E.add_constraint((Q1[x][y] & S[posDict[i][0]][posDict[i][1]]
+                        & S[posDict[i + 1 % 8][0]][posDict[i + 1 % 8][0]]
+                        & S[posDict[i + 2 % 8][0]][posDict[i + 2 % 8][1]]
+                        & S[posDict[i + 3 % 8][0]][posDict[i + 3 % 8][1]]
+                        & S[posDict[i + 4 % 8][0]][posDict[i + 4 % 8][1]]
+                        & S[posDict[i + 5 % 8][0]][posDict[i + 5 % 8][1]]
+                        & S[posDict[i + 6 % 8][0]][posDict[i + 6 % 8][1]])
+                        >> B[posDict[i + 7 % 8][0]][posDict[i + 7 % 8][0]])
+               else:          
                 print >> sys.stderr, "dictionary error"
     return E                                  
 
