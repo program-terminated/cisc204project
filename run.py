@@ -58,8 +58,36 @@ def final_theory():
     E = Encoding()
     
     # Add constraints to every square in the grid
-    for i in range(size):
-      for j in range(size):
+    posDict = {}
+
+for x in range(length+1):
+    for y in range(width+1):
+        posDict.clear()
+        if (x-1 >= 0 and y-1 >= 0):
+            posDict[1] = (x-1, y-1)
+        if (x-1 >= 0):
+            posDict[2] = (x-1, y)
+        if (x-1 >= 0 and y+1 <= width):
+            posDict[3] = (x-1, y+1)
+        if (y-1 >= 0):
+            posDict[4] = (x, y-1)
+        if (y+1 <= width):
+            posDict[5] = (x, y+1)
+        if (x+1 <= length and y-1 >= 0):
+            posDict[6] = (x+1, y-1)
+        if (x+1 <= length):
+            posDict[7] = (x+1, y)
+        if (x+1 <= length and y+1 <= width):
+            posDict[8] = (x+1, y+1)
+        for i in posDict:
+            if (len(posDict) == 3):
+                #make constraints
+            elif (len(posDict) == 5):
+                #make constraints
+            elif (len(posDict) == 8):
+                #make constraints
+            else:
+                print >> sys.stderr, "dictionary error"
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
