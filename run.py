@@ -32,15 +32,10 @@ class FancyPropositions:
         return f"A.{self.data}"
 
 # Call your variables whatever you want
-a = BasicPropositions("a")
-b = BasicPropositions("b")   
-c = BasicPropositions("c")
-d = BasicPropositions("d")
-e = BasicPropositions("e")
-# At least one of these will be true
-x = FancyPropositions("x")
-y = FancyPropositions("y")
-z = FancyPropositions("z")
+S = BasicPropositions("S")
+Q = BasicPropositions("Q")
+B = BasicPropositions("B")
+
 
 
 # Build an example full theory for your setting and return it.
