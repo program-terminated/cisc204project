@@ -88,10 +88,12 @@ def final_theory():
             for i in posDict:
               # If the length of the dictionary is 3, it means our reference square is in the corner of the board.
               if (len(posDict) == 3):
-                E.add_constraint((Q1[x][y] & B(posDict[i])) >> (S(posDict[i+1 % 3]) & S(posDict[i+2 % 3])))
-                E.add_constraint((Q1[x][y] & S(posDict[i]) & S(posDict[i+1 % 3])) >> B(posDict[i+2 % 3]))
-                E.add_constraint((Q2[x][y] & B(posDict[i]) & B(posDict[i+1 % 3])) >> S(posDict[i+2 % 3]))
-                E.add_constraint(Q3[x][y] >> B(posDict[i]) & B(posDict[i+1 % 3]) & B(posDict[i+2 % 3]))
+                    E.add_constraint((Q1[x][y] & B[posDict[i][0]][posDict[i][1]] >>
+                                      (S[posDict[i + 1 % 3][0]][i + 1 % 3][1]) &
+                                      S[posDict[i+2 % 3][0]][posDict[i+2 % 3][1]]))
+                    E.add_constraint((Q1[x][y] & S[posDict[i][0]][posDict[i][1]] &
+                                      S[posDict[i + 1 % 3][0]][posDict[i + 1 % 3][1]] >>
+                                      B[posDict[i + 2 % 3][0]][posDict[i + 2 % 3][1]]))
               # If the length of the dictionary is 5, the reference square is along the outer perimeter of the board.
               elif (len(posDict) == 5):
                 E.add_constraint((Q1[x][y] & B(posDict[i])) >> (S(posDict[i+1 % 5]) & S(posDict[i+2 % 5]) & S(posDict[i+3 % 5]) & S(posDict[i+4 % 5])))
