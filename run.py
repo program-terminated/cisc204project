@@ -85,7 +85,7 @@ def final_theory():
                 posDict[8] = [x+1], [y+1]
               
              # We make different constraints based on where our reference square is on the board
-            for i in posDict
+            for i in posDict:
               # If the length of the dictionary is 3, it means our reference square is in the corner of the board.
               if (len(posDict) == 3):
                 E.add_constraint((Q1[x][y] & B(posDict[i])) >> (S(posDict[i+1 % 3]) & S(posDict[i+2 % 3])))
