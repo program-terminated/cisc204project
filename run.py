@@ -83,7 +83,7 @@ def final_theory():
               posDict[8] = (x+1, y+1)
           for i in posDict:
               if (len(posDict) == 3):
-                  #make constraints
+                  E.add_constraint((Q1[x][y]) ∧ B( *posDict[i] )) → (S(* posDict[i+1 % 3] ) ∧ S( *posDict[i+2 % 3]))
               elif (len(posDict) == 5):
                   #make constraints
               elif (len(posDict) == 8):
