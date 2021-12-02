@@ -12,6 +12,14 @@ test_grid = [['-', 'Q1', '-'],
              ['Q1','Q1', '-'],
              ['-','-','-']]
 
+test_grid2 = [['Q1', '-', 'Q1'],
+              ['Q1', 'Q1', 'Q1'],
+              ['-', '-', '-']]
+
+test_grid3 = [['Q2', 'Q2', 'Q1'],
+              ['-', '-', '-'],
+              ['Q2','Q2','Q1']]
+
 def init_board(input_grid):
     # board that is inputed
     # we grab length and collumns from length of inputed board
