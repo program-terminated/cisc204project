@@ -73,21 +73,24 @@ def final_theory():
           E.addConstraint(~(B[x][y] & Q1[x][y] & Q2[x][y] & Q3[x][y]))
             posDict.clear()
             if (x-1 >= 0 and y-1 >= 0):
-                posDict[1] = [x-1, y-1]
+                posDict.append([x-1, y-1])
             if (x-1 >= 0):
-                posDict[2] = [x-1, y]
+                posDict.append([x-1, y])
             if (x-1 >= 0 and y+1 <= col):
-                posDict[3] = [x-1, y+1]
+                posDict.append([x-1, y+1])
             if (y-1 >= 0):
-                posDict[4] = [x, y-1]
+                posDict.append([x, y-1])
             if (y+1 <= col):
-                posDict[5] = [x, y+1]
+                posDict.append([x, y+1])
             if (x+1 <= row and y-1 >= 0):
-                posDict[6] = [x+1, y-1]
+                posDict.append([x+1, y-1])
             if (x+1 <= row):
-                posDict[7] = [x+1, y]
+                posDict.append([x+1, y])
             if (x+1 <= row and y+1 <= col):
-                posDict[8] = [x+1, y+1]
+                posDict.append([x+1, y+1])
+              
+             # We make different constraints based on where our reference square is on the board
+            for i in posDict:
               
              # We make different constraints based on where our reference square is on the board
             for i in posDict:
