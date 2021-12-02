@@ -58,6 +58,8 @@ def init_board(input_grid):
 def final_theory():
     E = Encoding()
     
+    
+    
     # Add constraints to every square in the grid
     posDict = {}
 
@@ -66,6 +68,9 @@ def final_theory():
     row, col = init_board(test_grid)
     for x in range(row+1):
         for y in range(col+1):
+          E.addConstraint(~B[x][y] >> S[x][y])
+          E.addConstraint(~S[x][y] >> B[x][y])
+          E.addConstraint(~(B[x][y] & Q1[x][y] & Q2[x][y] & Q3[x][y]))
             posDict.clear()
             if (x-1 >= 0 and y-1 >= 0):
                 posDict[1] = [x-1, y-1]
