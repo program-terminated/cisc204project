@@ -6,7 +6,7 @@ from nnf.operators import iff
 
 E = Encoding()
 
-
+# Class declaration that nstantiates the proposition type "Var"
 @proposition(E)
 class Var:
     def __init__(self, data):
@@ -24,6 +24,7 @@ def neg(f):
     return f.negate()
 
 
+# Prints the initial board setup
 def show_board(board):
     for i in range(3):
         print(" | ", end="")
@@ -84,7 +85,8 @@ u = [
     [Var('u10'), Var('u11'), Var('u12')],
     [Var('u20'), Var('u21'), Var('u22')]]
 
-
+# Initializes the board by iterating through each position on the board 
+# and assigning the appropriate proposition to the current tile.
 def board_to_constraint(E):
     for i in range(3):
         for j in range(3):
